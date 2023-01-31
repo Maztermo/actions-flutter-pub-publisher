@@ -1,4 +1,5 @@
-FROM cirrusci/flutter:stable
+ARG FLUTTER_VERSION
+FROM cirrusci/flutter:INPUT_FLUTTER_VERSION
 
 USER root
 
