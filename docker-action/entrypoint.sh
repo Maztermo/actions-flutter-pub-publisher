@@ -31,7 +31,7 @@ EOF
 
 switch_working_directory() {
   echo "Switching to package directory"
-  cd "../$INPUT_PACKAGE_DIRECTORY"
+  cd "..\\$INPUT_PACKAGE_DIRECTORY"
 }
 
 test_dart() {
