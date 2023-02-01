@@ -31,6 +31,8 @@ EOF
 
 switch_working_directory() {
   echo "Switching to package directory"
+  pwd
+  cd ..
   cd $INPUT_PACKAGE_DIRECTORY
 }
 
