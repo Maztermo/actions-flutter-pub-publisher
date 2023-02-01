@@ -2,13 +2,6 @@
 
 set -e
 
-echo $INPUT_CREDENTIAL 
-echo $INPUT_PACKAGE_DIRECTORY
-echo $INPUT_SKIP_TEST
-echo $INPUT_FLUTTER_PACKAGE 
-echo $EXECUTABLE_PREFIX
-echo $INPUT_DRY_RUN
-
 check_credentials() {
   echo "Check credentials"
   if [ -z "$INPUT_CREDENTIAL" ]; then
