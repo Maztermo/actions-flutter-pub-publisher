@@ -4,7 +4,7 @@ set -e
 
 check_credentials() {
   echo "Check credentials"
-  if [ -z "$INPUT_CREDENTIAL" ]; then
+  if [ -z "$1" ]; then
     echo "Missing credential"
     exit 1
   fi
@@ -15,7 +15,7 @@ copy_credential() {
   echo "Copy credentials"
   mkdir -p ~/Library/Application\ Support/dart
   cat <<EOF > ~/Library/Application\ Support/dart/pub-credentials.json
-$INPUT_CREDENTIAL
+$1
 EOF
   mkdir -p ~/.pub-cache
   ln -s ~/Library/Application\ Support/dart/pub-credentials.json credentials.json
@@ -24,7 +24,7 @@ EOF
 
 switch_working_directory() {
   echo "Switching to package directory"
-  cd "$INPUT_PACKAGE_DIRECTORY"
+  cd "$2"
 }
 
 test_dart() {
@@ -40,10 +40,10 @@ test_flutter() {
 }
 
 run_test_if_needed() {
-  if "${INPUT_SKIP_TEST}"; then
+  if "${3}"; then
     echo 'Skip test'
   else
-    if "${INPUT_FLUTTER_PACKAGE}"; then
+    if "${4}"; then
       test_flutter
     else
       test_dart
@@ -53,21 +53,21 @@ run_test_if_needed() {
 
 create_prefix() {
   EXECUTABLE_PREFIX="dart"
-  if "${INPUT_FLUTTER_PACKAGE}"; then
+  if "${4}"; then
     EXECUTABLE_PREFIX="flutter"
   fi
 }
 
 dry_run() {
   echo "Executing package validation"
-  $EXECUTABLE_PREFIX pub publish --dry-run
+  $5 pub publish --dry-run
 }
 
 publish_package() {
   dry_run
-  if [ "${INPUT_DRY_RUN}" = false ]; then
+  if [ "${6}" = false ]; then
     echo "Publish package to Pub"
-    $EXECUTABLE_PREFIX pub publish -f
+    $5 pub publish -f
   fi
 }
 
