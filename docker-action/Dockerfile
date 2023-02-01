@@ -6,8 +6,8 @@ USER root
 
 WORKDIR /home/cirrus
 
-COPY entrypoint.sh /home/cirrus/entrypoint.sh
+COPY docker-action/entrypoint.sh /home/cirrus/entrypoint.sh
 
-RUN chmod +x entrypoint.sh
+RUN chmod +x docker-action/entrypoint.sh
 
 ENTRYPOINT ["/home/cirrus/entrypoint.sh"]
