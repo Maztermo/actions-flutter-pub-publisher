@@ -1,10 +1,4 @@
 ARG flutter_version
-ARG INPUT_CREDENTIAL 
-ARG INPUT_PACKAGE_DIRECTORY
-ARG INPUT_SKIP_TEST
-ARG INPUT_FLUTTER_PACKAGE 
-ARG EXECUTABLE_PREFIX
-ARG INPUT_DRY_RUN
 
 FROM cirrusci/flutter:${flutter_version}
 
@@ -14,6 +8,6 @@ WORKDIR /home/cirrus
 
 COPY entrypoint.sh /home/cirrus/entrypoint.sh
 
-RUN chmod +x entrypoint.sh ${INPUT_CREDENTIAL} ${INPUT_PACKAGE_DIRECTORY} ${INPUT_SKIP_TEST} ${INPUT_FLUTTER_PACKAGE} ${EXECUTABLE_PREFIX} ${INPUT_DRY_RUN}
+RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/home/cirrus/entrypoint.sh"]
