@@ -9,10 +9,6 @@ inputs:
     description: '(Optional) Publish packages type. (default: true)'
     required: false
     default: true
-  flutter_version:
-    description: '(Optional) Select Flutter version (default: stable)'
-    required: false
-    default: 'stable'
   skip_test:
     description: '(Optional) Skip test (default: false)'
     required: false
@@ -28,6 +24,9 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  with:
+    build-args: |
+      flutter_version=2.10.5
   args:
     - ${{ inputs.flutter_version }}
 branding:

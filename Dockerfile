@@ -1,4 +1,4 @@
-ARG input_flutter_version
+ARG flutter_version=stable
 FROM cirrusci/flutter:${input_flutter_version}
 
 USER root
