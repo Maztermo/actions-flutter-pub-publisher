@@ -1,5 +1,5 @@
-ARG INPUT_FLUTTER_VERSION
-FROM cirrusci/flutter:${INPUT_FLUTTER_VERSION}
+ARG flutter_version
+FROM cirrusci/flutter:${flutter_version}
 
 USER root
 
