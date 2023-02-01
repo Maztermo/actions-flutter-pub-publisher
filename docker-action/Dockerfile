@@ -5,8 +5,8 @@ USER root
 
 WORKDIR /home/cirrus
 
-COPY entrypoint.sh /home/cirrus/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["/home/cirrus/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
