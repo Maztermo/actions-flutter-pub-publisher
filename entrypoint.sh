@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+set -e
+
 cd /docker-action
 echo "creating docker image with Flutter version: $INPUT_FLUTTER_VERSION"
 
