@@ -1,12 +1,12 @@
-# Container image that runs your code
-FROM alpine:latest
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY docker-action /docker-action
-COPY entrypoint.sh /entrypoint.sh
+FROM cirrusci/flutter:2.10.5
 
-RUN apk add --update --no-cache docker
-RUN ["chmod", "+x", "/entrypoint.sh"]
+USER root
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+WORKDIR /home/cirrus
+
+COPY entrypoint.sh /home/cirrus/entrypoint.sh
+
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["/home/cirrus/entrypoint.sh"]
